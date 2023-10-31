@@ -132,3 +132,18 @@ function someFunction() {
 
 someFunction();
 console.log(myVar); // 5, because global 'myVar' is still 5
+
+const userProfile = {
+    name: "John Doe",
+    age: 30,
+    email: "john@example.com",
+    isAdmin: true
+};
+function printUserProfile(userProfile) {
+    for (let key in userProfile) {
+        console.log(`${key}:${userProfile[key]}`);
+    }
+}
+printUserProfile();
+
+const countOccurrence = (str) => {};
