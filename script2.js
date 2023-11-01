@@ -146,4 +146,122 @@ function printUserProfile(userProfile) {
 }
 printUserProfile();
 
-const countOccurrence = (str) => {};
+const countOccurrence = (str) => {
+    let uniqChar = {};
+    for (let i = 0; i < str.length; i++) {
+        if (uniqChar[str[i]]) {
+            uniqChar[str[i]]++;
+        } else {
+            uniqChar[str[i]] = 1;
+        }
+    }
+    return uniqChar;
+};
+console.log(countOccurrence("banana"));
+
+const averageScore = (scores) => {
+    let highestScore = 0;
+    for (let i = 0; i < scores.length; i++) {
+        highestScore += scores[i];
+    }
+    return highestScore / scores.length;
+};
+
+const devideAvg = (numbers) => {
+    let averageScores = {};
+    for (let key in numbers) {
+        const devideAvg = averageScore(numbers[key]);
+        averageScores[key] = devideAvg;
+    }
+    return averageScores;
+};
+console.log(devideAvg({ John: [85, 90, 78], Jane: [92, 88, 91] }));
+
+/* Assignment 2: Palindrome Checker
+ * Write a function that takes a one word string as an argument and checks if it is a palindrome.
+* A palindrome is a word that reads the same backwards as forwards, ignoring case.
+* The function should return true if the word is a palindrome and false otherwise.
+
+* Example:
+* isPalindrome("Level") should return true
+* isPalindrome("OpenAI") should return false
+*/
+const isPlindrome = (word) => {
+    const toLowerCaseWord = word.toLowerCase();
+    return toLowerCaseWord === toLowerCaseWord.split(" ").reverse("").join("");
+};
+console.log(isPlindrome("Level"));
+
+/* Assignment 3: Array Filter
+ * Write a function that takes an array of strings and a number as arguments.
+ * The function should return a new array containing strings from the original array
+ * that have a length less than or equal to the provided number.
+ * Example:
+ * filterArray(["apple", "banana", "cherry", "dates", "elderberry"], 5)
+ * should return ["apple", "dates"]*/
+
+const filterArray = (str, num) => {
+    let newArr = [];
+    for (let i = 0; i < str.length; i++) {
+        if (str[i].length <= num) {
+            newArr.push(str[i]);
+        }
+    }
+    return newArr;
+};
+
+console.log(
+    filterArray(["apple", "banana", "cherry", "dates", "elderberry"], 5)
+);
+
+/*
+ * Assignment 4: Array of Objects
+ * Write a function that takes an array of strings as an argument.
+ * The function should return a new array that contains objects.
+ * Each object in the array should have a single property, with the key being
+ * the string from the input array and the value being the square of the string's length.
+ *  * Example:
+ * stringsToObjects(["cat", "window", "prop"])
+ * should return [{cat: 9}, {window: 36}, {prop: 16}]
+ */
+
+const stringsToObjects = (arr) => {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        let obj = {};
+        obj[arr[i]] = obj[arr[i]].length ** 2;
+        result.push(obj);
+    }
+    return result;
+};
+//
+const calcAverage = (a, b, c) => (a + b + c) / 3;
+let scoreDolphins = calcAverage(44, 23, 71);
+let scoreKoalas = calcAverage(65, 54, 49);
+
+let scoreDolphins1 = calcAverage(85, 54, 41);
+let scoreKoalas1 = calcAverage(23, 34, 27);
+
+const checkWinner = (avgDolphins, avgKoalas) => {
+    if (avgDolphins >= 2 * avgKoalas) {
+        console.log(`Dolphin win  (${avgDolphins} vs {avgKoalas})`);
+    } else if (avgKoalas >= 2 * avgDolphins) {
+        console.log(`Dolphin win  (${avgKoalas} vs {avgDolphins})`);
+    } else {
+        console.log("No team wins");
+    }
+};
+
+checkWinner(scoreDolphins, scoreKoalas);
+
+checkWinner(576, 111);
+
+const originalArray = [1, 2, [3, 4]];
+const copiedArray = [...originalArray];
+
+console.log(copiedArray); // Outputs [1, 2, [3, 4]]
+
+// Modifying the inner array in the copied array
+copiedArray[2][0] = 77;
+
+console.log(originalArray); // Outputs [1, 2, [99, 4]]
